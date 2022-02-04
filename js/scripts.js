@@ -1,3 +1,17 @@
+
+// Insert the date of the most recent Sunday
+$('#weekDate').append(function() {
+  d = new Date();
+  d.setDate(d.getDate() - d.getDay());
+  return ("Week of " + d.toLocaleDateString('en-us', {
+    weekday: "long",
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  }).toString())
+});
+
+// Create recipe object used to populate page
 // TO DO: read in recipes from databse
 var grocery_list = {
   recipe1: {
@@ -48,18 +62,13 @@ var grocery_list = {
 			}
    };
 var recipe_list = ["#recipe1","#recipe2","#recipe3"];
-$('#weekDate').append(function() {
-  d = new Date();
-  d.setDate(d.getDate() - d.getDay());
-  return ("Week of " + d.toLocaleDateString('en-us', {
-    weekday: "long",
-    year: "numeric",
-    month: "short",
-    day: "numeric"
-  }).toString())
-});
+
+// Populate each recipe box (1-3) with data from grocery_list
 $.each(recipe_list, function(index,value){
-	$(value).append('<img class="recipe-img" src='+grocery_list[$(value).attr('id')].img +'><br><a class="recipe-link" href='+grocery_list[$(value).attr('id')].link+'target=_blank>'+grocery_list[$(value).attr('id')].name+'</a>')
+  var recipe_img = grocery_list[$(value).attr('id')].img;
+  var recipe_link = grocery_list[$(value).attr('id')].link;
+  var recipe_name = grocery_list[$(value).attr('id')].name;
+	$(value).append(`<img class='recipe-img' src=${recipe_img}><br><a class='recipe-link' href=${recipe_link} target=_blank>${recipe_name}</a>`)
 });
 $('.recipe-boxes').on('click', function() {
 	$('.grocery-list').append("<div></div>")
