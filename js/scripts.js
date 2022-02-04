@@ -13,7 +13,7 @@ $('#weekDate').append(function() {
 
 // Create recipe object used to populate page
 // TO DO: read in recipes from databse
-var grocery_list = {
+var groceryArray = {
   recipe1: {
   	name: "Sweet Potato Tots",
     link: "https://thebigmansworld.com/healthy-3-ingredient-baked-sweet-potato-zucchini-tots-paleo-vegan-gluten-free/",
@@ -61,24 +61,24 @@ var grocery_list = {
           ]
 			}
    };
-var recipe_list = ["#recipe1","#recipe2","#recipe3"];
+var recipeArray = ["#recipe1","#recipe2","#recipe3"];
 
-// Populate each recipe box (1-3) with data from grocery_list
-$.each(recipe_list, function(index,value){
-  var recipe_img = grocery_list[$(value).attr('id')].img;
-  var recipe_link = grocery_list[$(value).attr('id')].link;
-  var recipe_name = grocery_list[$(value).attr('id')].name;
-	$(value).append(`<img class='recipe-img' src=${recipe_img}><br><a class='recipe-link' href=${recipe_link} target=_blank>${recipe_name}</a>`)
+// Populate each recipe box (1-3) with data from groceryArray
+$.each(recipeArray, function(index,value){
+  var recipeImg = groceryArray[$(value).attr('id')].img;
+  var recipeLink = groceryArray[$(value).attr('id')].link;
+  var recipeName = groceryArray[$(value).attr('id')].name;
+	$(value).append(`<img class='recipe-img' src=${recipeImg}><br><a class='recipe-link' href=${recipeLink} target=_blank>${recipeName}</a>`)
 });
 $('.recipe-boxes').on('click', function() {
-	$('.grocery-list').append("<div></div>")
-  $('.grocery-list').append("<ul>")
+	$('.groceryArray').append("<div></div>")
+  $('.groceryArray').append("<ul>")
   // TO DO: Add header bullet with recipe name and make each ingredient a sub-bullet
-  var text = grocery_list[$(this).attr('id')].ingredients;
+  var text = groceryArray[$(this).attr('id')].ingredients;
   $.each(text, function(index, value){
-  	$('.grocery-list').append("<li>"+value+"</li>")
+  	$('.groceryArray').append("<li>"+value+"</li>")
   });
-  $('.grocery-list').append("</ul>")
-  $('.grocery-list').show();
+  $('.groceryArray').append("</ul>")
+  $('.groceryArray').show();
   // TO DO: stop item from being appended more than once
 })
