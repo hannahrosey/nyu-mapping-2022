@@ -1,11 +1,16 @@
+html{
+  font-family: 'Lato', sans-serif;
+}
+
 .header-text{
+  /* font-family: 'Lato', sans-serif; */
   text-align: center;
   margin: 20px;
-  font-family: 'Lato', sans-serif;
   color: #6b705c;
 }
 
 .recipe-wrapper{
+  /* font-family: 'Lato', sans-serif; */
   display: flex;
   justify-content: center;
   background: #DDBEA9;
@@ -35,7 +40,6 @@
 }
 
 .recipe-link{
-  font-family: 'Lato', sans-serif;
   font-size: 15px;
   color: black;
   text-decoration: none;
@@ -47,7 +51,6 @@
 
 .grocery-list{
   display: none;
-  font-family: 'Lato', sans-serif;
   color: #6b705c;
   justify-content: center;
   margin-left: 40px;
@@ -56,12 +59,12 @@
 }
 
 .footer{
+  /* font-family: 'Lato', sans-serif; */
   position: relative;
   text-align: center;
 }
 
 .footer-button{
-  font-family: 'Lato', sans-serif;
   color: black;
   border: none;
   background: #FFE8D6;
@@ -71,7 +74,6 @@
 }
 
 .footer-link{
-  font-family: 'Lato', sans-serif;
   color: black;
   text-decoration: none;
 }
