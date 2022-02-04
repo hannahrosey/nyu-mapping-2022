@@ -61,6 +61,7 @@ var groceryArray = {
           ]
 			}
    };
+
 var recipeArray = ["#recipe1","#recipe2","#recipe3"];
 
 // Populate each recipe box (1-3) with data from groceryArray
@@ -71,14 +72,14 @@ $.each(recipeArray, function(index,value){
 	$(value).append(`<img class='recipe-img' src=${recipeImg}><br><a class='recipe-link' href=${recipeLink} target=_blank>${recipeName}</a>`)
 });
 $('.recipe-boxes').on('click', function() {
-	$('.groceryArray').append("<div></div>")
-  $('.groceryArray').append("<ul>")
+	$('.grocery-list').append("<div></div>")
+  $('.grocery-list').append("<ul>")
   // TO DO: Add header bullet with recipe name and make each ingredient a sub-bullet
   var text = groceryArray[$(this).attr('id')].ingredients;
   $.each(text, function(index, value){
-  	$('.groceryArray').append("<li>"+value+"</li>")
+  	$('.grocery-list').append("<li>"+value+"</li>")
   });
-  $('.groceryArray').append("</ul>")
-  $('.groceryArray').show();
+  $('.grocery-list').append("</ul>")
+  $('.grocery-list').show();
   // TO DO: stop item from being appended more than once
 })

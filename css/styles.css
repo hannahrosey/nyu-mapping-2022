@@ -12,14 +12,14 @@
   border-radius: 5px;
   padding-left: 2px;
   padding-right: 2px;
-  padding-top: 10px;
+  padding-top: 20px;
   padding-bottom: 10px;
 }
 
 .recipe-boxes{
   width: 32%;
   display: relative;
-  padding-top: 20px;
+  padding-top: 30px;
   text-align: center;
 }
 
