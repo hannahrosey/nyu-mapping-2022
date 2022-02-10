@@ -1,14 +1,27 @@
+/* Entire document */
 html{
   font-family: 'Lato', sans-serif;
 }
 
+/* Header */
 .header-text{
-  /* font-family: 'Lato', sans-serif; */
   text-align: center;
   margin: 20px;
   color: #6b705c;
 }
 
+.grocery-list-button{
+  text-align: right;
+  display: none;
+  color: black;
+  border: none;
+  background: #FFE8D6;
+  border-radius: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+/* Recipes */
 .recipe-wrapper{
   /* font-family: 'Lato', sans-serif; */
   display: flex;
@@ -21,22 +34,47 @@ html{
   padding-bottom: 10px;
 }
 
-.recipe-boxes{
-  width: 32%;
-  display: relative;
-  padding-top: 30px;
+.recipe-table-layout{
+  table-layout: fixed;
+  width: 90%;
+  height: 90%;
   text-align: center;
+  border-spacing: 20px;
+}
+
+.recipe-header{
+  font-size: 16pt;
+  border-spacing: 10px;
+}
+
+.grocery-status{
+  font-size: 10pt;
+  font-style: italic;
 }
 
 .recipe-img{
   position: relative;
-  max-width: 85%;
-  max-height: 85%;
+  max-width: 100%;
+  max-height: 100%;
   border-radius: 25px;
 }
 
-.recipe-img:hover{
+.recipe-button{
+    color: black;
+    border: none;
+    background: #FFE8D6;
+    border-radius: 5px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.recipe-button:hover{
+  color: #b7b7a4;
   cursor:pointer;
+}
+
+.recipe-button:click{
+  color:
 }
 
 .recipe-link{
@@ -49,6 +87,7 @@ html{
   color: #b7b7a4;
 }
 
+/* Grocery list */
 .grocery-list{
   display: none;
   color: #6b705c;
@@ -58,8 +97,17 @@ html{
   width: 100%;
 }
 
+.list-space{
+  height: 15px;
+}
+
+.grocery-list-item{
+  padding-inline-start: 15px;
+  margin: 10px;
+}
+
+/* Footer */
 .footer{
-  /* font-family: 'Lato', sans-serif; */
   position: relative;
   text-align: center;
 }

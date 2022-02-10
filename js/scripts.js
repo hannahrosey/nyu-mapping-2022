@@ -28,7 +28,7 @@ var groceryArray = {
    },
   recipe2:{
   		name: "Balsamic Chicken and Mushrooms",
-      img: "https://nitrocdn.com/QJsLnWfsWAiuukSIMowyVEHtotvSQZoR/assets/static/optimized/rev-3ea912f/sites/default/files/styles/body_images_sm_2x/public/media/balsamic-chicken-mushrooms-2.jpg",
+      img: "https://cdn-aboak.nitrocdn.com/QJsLnWfsWAiuukSIMowyVEHtotvSQZoR/assets/static/optimized/rev-d3cf1d5/sites/default/files/styles/body_images_xs_2x/public/media/balsamic-chicken-mushrooms-3.jpg",
       link: "https://www.slenderkitchen.com/recipe/balsamic-chicken-with-mushrooms-and-thyme",
       ingredients: [
         	"1.33 lbs boneless skinless chicken breasts",
@@ -62,24 +62,75 @@ var groceryArray = {
 			}
    };
 
-var recipeArray = ["#recipe1","#recipe2","#recipe3"];
+// Add grocery list information
+// TO DO: more efficient way to string these together?
+var nameRow = `<tr>
+                  <th class=recipe-header>
+                    ${groceryArray["recipe1"].name}
+                  </th>
+                  <th class=recipe-header>
+                    ${groceryArray["recipe2"].name}
+                  </th>
+                  <th class=recipe-header>
+                    ${groceryArray["recipe3"].name}
+                  </th>
+                </tr>
+                <div></div>`;
+var imgRow = `<tr>
+                <td id=recipe1><img class=recipe-img src=${groceryArray["recipe1"].img}></td>
+                <td id=recipe2><img class=recipe-img src=${groceryArray["recipe2"].img}></td>
+                <td id=recipe3><img class=recipe-img src=${groceryArray["recipe3"].img}></td>
+              </tr>`;
+var buttonRow = `<tr>
+                  <td>
+                    <p id=recipe1-status class=grocery-status>Not yet in grocery list</p>
+                    <div></div>
+                    <button class=footer-button>
+                    <a class=footer-link target=_blank href=${groceryArray["recipe1"].link}>
+                    View full recipe</a>
+                    <button id=recipe1 class=recipe-button>Add to grocery list</a>
+                  </td>
+                  <td>
+                    <p id=recipe2-status class=grocery-status>Not yet in grocery list</p>
+                    <div></div>
+                    <button class=footer-button>
+                    <a class=footer-link target=_blank href=${groceryArray["recipe2"].link}>
+                    View full recipe</a>
+                    <button id=recipe2 class=recipe-button>Add to grocery list</a>
+                  </td>
+                  <td>
+                    <p id=recipe3-status class=grocery-status>Not yet in grocery list</p>
+                    <div></div>
+                    <button class=footer-button>
+                    <a class=footer-link target=_blank href=${groceryArray["recipe3"].link}>
+                    View full recipe</a>
+                    <button id=recipe3 class=recipe-button>Add to grocery list</a>
+                  </td>`
+$("#recipe-table").append(nameRow);
+$("#recipe-table").append(buttonRow);
+$("#recipe-table").append(imgRow);
 
-// Populate each recipe box (1-3) with data from groceryArray
-$.each(recipeArray, function(index,value){
-  var recipeImg = groceryArray[$(value).attr('id')].img;
-  var recipeLink = groceryArray[$(value).attr('id')].link;
-  var recipeName = groceryArray[$(value).attr('id')].name;
-	$(value).append(`<img class='recipe-img' src=${recipeImg}><br><a class='recipe-link' href=${recipeLink} target=_blank>${recipeName}</a>`)
-});
-$('.recipe-boxes').on('click', function() {
-	$('.grocery-list').append("<div></div>")
-  $('.grocery-list').append("<ul>")
+// Add to grocery list on click
+var addedRecipes = {};
+$('.recipe-button').on('click', function() {
+  var recipeName = groceryArray[this.id].name;
+  if (addedRecipes[recipeName]) {
+    return;
+  }
+	//$('.grocery-list').append('<div class=></div>');
+  $('.grocery-list').append(`<span><b>${recipeName}</b></span>`);
+  $('.grocery-list').append('<ul class="grocery-list-item">');
   // TO DO: Add header bullet with recipe name and make each ingredient a sub-bullet
-  var text = groceryArray[$(this).attr('id')].ingredients;
+  var text = groceryArray[this.id].ingredients;
   $.each(text, function(index, value){
-  	$('.grocery-list').append("<li>"+value+"</li>")
+  	$('.grocery-list').append("<li>"+value+"</li>");
   });
-  $('.grocery-list').append("</ul>")
+  $('.grocery-list').append("</ul>");
+  $('.grocery-list').append('<div class="list-space"></div>')
   $('.grocery-list').show();
   // TO DO: stop item from being appended more than once
+  addedRecipes[recipeName] = true;
+  var statusId = "#" + this.id + "-status";
+  $(statusId).html("Added to grocery list");
+  $(".grocery-list-button").show();
 })

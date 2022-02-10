@@ -18,16 +18,21 @@
 
 <body>
   <div class="header-text">
-    <h1><b>Whole30 2022</b></h1>
+    <!--- TO DO: shift button to the right --->
+    <h1><b>Whole30 2022
+      <button class=grocery-list-button>
+        <a class=recipe-link href="#grocery-list">View grocery list
+        </a>
+      </button>
+    </b></h1>
     <h2>This Week's Recipes</h2>
     <div id="weekDate"></div>
   </div>
   <div class="recipe-wrapper">
-    <div id="recipe1" class="recipe-boxes"></div>
-    <div id="recipe2" class="recipe-boxes"></div>
-    <div id="recipe3" class="recipe-boxes"></div>
+    <table id="recipe-table" class="recipe-table-layout">
+    </table>
   </div>
-  <div class="grocery-list">
+  <div id="grocery-list" class="grocery-list">
     <h3>Grocery List</h3>
   </div>
   <script
